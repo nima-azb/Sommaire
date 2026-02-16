@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { Children } from "react";
 
 const BgGradient = ({ className }: { className?: string }) => {
   return (
