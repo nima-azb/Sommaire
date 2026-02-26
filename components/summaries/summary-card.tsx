@@ -1,9 +1,9 @@
 import { Card } from "@/components/ui/card";
 import DeleteButton from "./delete-button";
 import Link from "next/link";
-import { title } from "process";
 import { FileTextIcon } from "lucide-react";
-import { Sumana } from "next/font/google";
+import { cn, formatFileName } from "@/lib/utils";
+import { formatDistanceToNow } from "date-fns";
 
 const SummaryHeader = ({
   fileUrl,
@@ -19,22 +19,37 @@ const SummaryHeader = ({
       <FileTextIcon className="w-6 h-6 sm:w-8 sm:h-8 text-rose-400 mt-1" />
       <div className="flex-1 min-w-0">
         <h3 className="text-base xl:text-lg font-semibold text-gray-900 truncate w-4/5">
-          {title}
+          {title || formatFileName(fileUrl)}
         </h3>
-        <p className="text-sm text-gr">{createdAt}</p>
+        <p className="text-sm text-gr">
+          {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
+        </p>
       </div>
     </div>
   );
 };
 
-// const StatusBadge = {}
+const StatusBadge = ({ status }: { status: string }) => {
+  return (
+    <span
+      className={cn(
+        "px-3 py-1 text-xs font-medium rounded-full capitalize",
+        status === "completed"
+          ? "bg-green-100 text-green-800"
+          : "text-yellow-800 bg-yellow-100",
+      )}
+    >
+      {status}
+    </span>
+  );
+};
 
 export default function SummaryCard({ summary }: { summary: any }) {
   return (
     <div>
       <Card className="relative h-full">
         <div className="absolute top-2 right-2">
-          <DeleteButton />
+          <DeleteButton summaryId={summary.id} />
         </div>
         <Link href={`summaries/${summary.id}`} className="block p-4 sm:p-6">
           <div className="flex flex-col gap-3 sm:gap-4">
@@ -48,7 +63,7 @@ export default function SummaryCard({ summary }: { summary: any }) {
             </p>
 
             <div className="flex justify-between items-center mt-2 sm:mt-4">
-              {/* <StatusBadge status={summary.status} /> */}
+              <StatusBadge status={summary.status} />
             </div>
           </div>
         </Link>
