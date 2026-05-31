@@ -1,3 +1,4 @@
-export default function Footer() {
-  return <footer className="bg-gray-50 py-12">Footer</footer>;
-}
+const Footer = () => {
+  return <div></div>;
+};
+export default Footer;

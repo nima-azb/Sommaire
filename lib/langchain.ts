@@ -9,7 +9,6 @@ export const fetchAndExtractPdfText = async (fileUrl: string) => {
   const loader = new PDFLoader(new Blob([arrayBuffer]));
 
   const docs = await loader.load();
-  console.log(docs);
   //combine all pages
 
   return docs.map((doc) => doc.pageContent).join("\n");

@@ -1,13 +1,13 @@
-import { getDbConnection } from "./db";
+import { getDbConnection } from "@/lib/db";
 
-export async function getSummaries(userId: string) {
+export const getSummaries = async (userId: string) => {
   const sql = await getDbConnection();
   const summaries =
     await sql`SELECT * from pdf_summaries where user_id = ${userId} ORDER BY created_at DESC`;
   return summaries;
-}
+};
 
-export async function getSummaryById(id: string) {
+export const getSummaryById = async (id: string) => {
   try {
     const sql = await getDbConnection();
 
@@ -24,8 +24,8 @@ export async function getSummaryById(id: string) {
     LENGTH(summary_text)-LENGTH(REPLACE(summary_text, ' ', ''))+1 as word_count FROM pdf_summaries WHERE id = ${id}`;
 
     return summary;
-  } catch (err) {
-    console.error("Error fetching summary by id", err);
+  } catch (error) {
+    console.error("Error fetching summary by ID", error);
     return null;
   }
-}
+};
