@@ -9,6 +9,7 @@ import {
   storePdfSummaryAction,
 } from "@/actions/uploadActions";
 import { useRouter } from "next/navigation";
+import LoadingSkeleton from "./loadingSkeleton";
 
 const schema = z.object({
   file: z
@@ -157,6 +158,7 @@ const UploadForm = () => {
               </span>
             </div>
           </div>
+          <LoadingSkeleton />
         </>
       )}
     </div>
