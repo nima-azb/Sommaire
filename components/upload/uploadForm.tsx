@@ -9,7 +9,7 @@ import {
   storePdfSummaryAction,
 } from "@/actions/uploadActions";
 import { useRouter } from "next/navigation";
-import LoadingSkeleton from "./loadingSkeleton";
+import LoadingSkeleton from "@/components/upload/loadingSkeleton";
 
 const schema = z.object({
   file: z
@@ -39,7 +39,7 @@ const UploadForm = () => {
         description: err.message,
       });
     },
-    onUploadBegin: ({ file }) => {
+    onUploadBegin: (file) => {
       console.log("upload has begun for", file);
     },
   });
@@ -88,7 +88,11 @@ const UploadForm = () => {
 
       //Parse the pdf using lang chain
 
-      const result = await generatePdfSummary(resp);
+      const userId = resp[0].serverData.userId;
+      const pdfUrl = resp[0].serverData.file.url;
+      const fileName = resp[0].serverData.file.name;
+
+      const result = await generatePdfSummary({ userId, pdfUrl, fileName });
       console.log(result);
 
       const { data = null, message = null } = result || {};
