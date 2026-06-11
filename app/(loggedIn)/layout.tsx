@@ -17,9 +17,8 @@ export default async function Layout({
     user.emailAddresses[0].emailAddress,
   );
 
-  // todo
-  // if (!hasActiveSubscription) {
-  //   return <UpgradeRequired />;
-  // }
+  if (!hasActiveSubscription) {
+    return <UpgradeRequired />;
+  }
   return <>{children}</>;
 }

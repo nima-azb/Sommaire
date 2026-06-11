@@ -39,8 +39,8 @@ const UploadForm = () => {
         description: err.message,
       });
     },
-    onUploadBegin: (file) => {
-      console.log("upload has begun for", file);
+    onUploadBegin: (data) => {
+      console.log("upload has begun for", data);
     },
   });
 
@@ -71,8 +71,8 @@ const UploadForm = () => {
       });
 
       //Upload to uploadthing
-      const resp = await startUpload([file]);
-      if (!resp) {
+      const uploadResponse = await startUpload([file]);
+      if (!uploadResponse) {
         toast("Something went wrong", {
           description: "Please use a different file",
           style: { color: "red" },
@@ -88,11 +88,11 @@ const UploadForm = () => {
 
       //Parse the pdf using lang chain
 
-      const userId = resp[0].serverData.userId;
-      const pdfUrl = resp[0].serverData.file.url;
-      const fileName = resp[0].serverData.file.name;
+      const userId = uploadResponse[0].serverData.userId;
+      const pdfUrl = uploadResponse[0].serverData.fileUrl;
+      const fileName = uploadResponse[0].serverData.fileName;
 
-      const result = await generatePdfSummary({ userId, pdfUrl, fileName });
+      const result = await generatePdfSummary({ pdfUrl, fileName });
       console.log(result);
 
       const { data = null, message = null } = result || {};
@@ -105,7 +105,7 @@ const UploadForm = () => {
         if (data.summary) {
           storeResult = await storePdfSummaryAction({
             summary: data.summary,
-            fileUrl: resp[0].serverData.file.url,
+            fileUrl: uploadResponse[0].serverData.fileUrl,
             title: data.title,
             fileName: file.name,
           });

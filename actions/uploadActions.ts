@@ -16,11 +16,9 @@ interface PdfSummaryType {
 }
 
 export const generatePdfSummary = async ({
-  userId,
   pdfUrl,
   fileName,
 }: {
-  userId: string;
   pdfUrl: string;
   fileName: string;
 }) => {
