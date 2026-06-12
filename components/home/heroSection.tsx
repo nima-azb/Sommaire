@@ -64,7 +64,7 @@ const HeroSection = () => {
           className="text-white mt-6 text-base sm:text-lg lg:text-xl rounded-full px-8 sm:px-10 lg:px-12 py-6 sm:py-7 lg:py-8 lg:mt-16 bg-linear-to-r from-slate-900 to-rose-500 hover:from-rose-500 hover:to-slate-900 font-bold hover:no-underline shadow-lg transition-all duration-300"
         >
           <Link href="/#pricing" className="flex gap-2 items-center ">
-            <span>Try Sommaire</span>
+            <span>Try Gist</span>
             <ArrowRight className="animate-pulse" />
           </Link>
         </Button>

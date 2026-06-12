@@ -11,10 +11,8 @@ export const pricingPlans = [
       "Standard processing speed",
       "Email support",
     ],
-    paymentLink: isDev
-      ? "https://buy.stripe.com/test_bJecN4bgagP20Hr4mL1sQ00"
-      : "",
-    priceId: isDev ? "price_1TdUYPAPUPSQPcdo32rlenZA" : "",
+    paymentLink: "https://buy.stripe.com/test_bJecN4bgagP20Hr4mL1sQ00",
+    priceId: "price_1TdUYPAPUPSQPcdo32rlenZA",
   },
   {
     id: "pro",
@@ -27,10 +25,9 @@ export const pricingPlans = [
       "24/7 priority support",
       "Markdown Export",
     ],
-    paymentLink: isDev
-      ? "https://buy.stripe.com/test_7sY7sK0BwfKYbm56uT1sQ01"
-      : "",
-    priceId: isDev ? "price_1TdUYPAPUPSQPcdoFPsrlvoS" : "",
+    paymentLink: "https://buy.stripe.com/test_7sY7sK0BwfKYbm56uT1sQ01",
+
+    priceId: "price_1TdUYPAPUPSQPcdoFPsrlvoS",
   },
 ];
 

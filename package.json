@@ -1,5 +1,5 @@
 {
-  "name": "sommaire",
+  "name": "gist",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,7 +18,7 @@
     "@neondatabase/serverless": "^1.0.2",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.3",
-    "@uploadthing/react": "^6.6.0",
+    "@uploadthing/react": "^7.3.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -32,7 +32,7 @@
     "sonner": "^2.0.7",
     "stripe": "^22.2.0",
     "tailwind-merge": "^3.3.1",
-    "uploadthing": "^6.12.0",
+    "uploadthing": "^7.7.4",
     "zod": "^3.25.76"
   },
   "devDependencies": {
