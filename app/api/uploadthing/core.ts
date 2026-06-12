@@ -10,7 +10,7 @@ export const ourFileRouter = {
       maxFileSize: "32MB",
     },
   })
-    .middleware(async ({ req }) => {
+    .middleware(async () => {
       // get user data
       const user = await currentUser();
 
@@ -20,7 +20,7 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("upload completed for user id", metadata.userId);
-      console.log("file url", file.ufsUrl);
+      console.log("file url", file.url);
 
       return {
         userId: metadata.userId,

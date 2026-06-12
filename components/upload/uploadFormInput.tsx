@@ -37,7 +37,7 @@ const UploadFormInput = forwardRef<HTMLFormElement, UploadFormInputProps>(
         </div>
       </form>
     );
-  }
+  },
 );
 
 UploadFormInput.displayName = "UploadFormInput";

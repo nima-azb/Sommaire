@@ -27,7 +27,7 @@ const parseSection = (section: string) => {
   return {
     title: cleanTitle,
     points: points.filter(
-      (point) => point && !point.startsWith("#") && !point.startsWith("Choose")
+      (point) => point && !point.startsWith("#") && !point.startsWith("Choose"),
     ),
   };
 };

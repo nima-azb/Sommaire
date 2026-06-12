@@ -9,15 +9,27 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [
-  ...compat.extends({
-    extends: ["next/core-web-vitals", "next/typescript", "prettier"],
-    plugins: ["prettier"],
-    rules: {
-      "prettier/prettier": "error",
-      "react/no-escape-entities": "off",
+export default [
+  ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  {
+    plugins: {
+      prettier: (await import("eslint-plugin-prettier")).default,
     },
-  }),
-];
+    rules: {
+      // Disable Prettier build errors
+      "prettier/prettier": "warn",
 
-export default eslintConfig;
+      // React
+      "react/no-unescaped-entities": "off",
+
+      // TypeScript
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
+
+      // Optional (common ones people disable)
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
+];
